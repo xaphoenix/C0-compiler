@@ -2,24 +2,8 @@
 #define CHAR 1
 #define VOID 2
 
-#define FUNC 0
-#define PARA 1
-#define PUSH 2
-#define CALL 3
-#define RECALL 4
-#define RET 5
-#define VAR 6
-#define CONST 7
-#define ASSIGN 8
-#define LOGIC 9
-#define GO 10
-#define LABEL 11
-#define SARRAY 12
-#define LARRAY 13
-#define PRINT 14
-#define SCAN 15
 
-int grammar_debug = 1;
+int grammar_debug = 0;
 
 const int maxline = 600; // the maximum number of lines this compiler can compile
 const int maxcol = 10000; // the maximum nubmer of column one line can contain
@@ -47,16 +31,8 @@ string runtime_msg[maxruntime_msg];
 int level;  // now level
 int main_flag;
 int error_flag;
-char file_path[11000]="15061176_test2.txt";
+char file_path[11000]="test.txt";
 char file_tmp[maxcol + 10];
-
-int if_num;  // if counter
-int while_num;  // while counter
-int func_num;  // func counter
-int switch_num;  // switch counter
-int case_num;  // case counter
-int default_num;  // default counter
-int val_num;  // value counter
 
 map<string, string> key_word;
 //symbol
@@ -122,6 +98,12 @@ char string2char(string s)
 {
 	return s[0];
 }
+string num2char2string(int x)
+{
+	string tmp = "";
+	char y = (char)x;
+	return tmp + y;
+}
 string change_chars(char *s)
 {
 	string tmp="";
@@ -133,8 +115,8 @@ string change_chars(char *s)
 
 void init_read()
 {
-	printf("please input your code location:");
-	scanf("%s",file_path);
+	//printf("please input your code location:");
+	//scanf("%s",file_path);
 	FILE* f = fopen(file_path, "r");
 	freopen("output.txt","w",stdout);
 	for (int i = 0; i < maxline; i++)

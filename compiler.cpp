@@ -15,8 +15,8 @@ using namespace std;
 #include"global.h"
 #include"error.h"
 #include"word.h"
-#include"table.h"
 #include"mcode.h"
+#include"table.h"
 #include"grammar.h"
 
 int adsp;
@@ -27,5 +27,6 @@ int main()
 	//test_word();
 	getch();
 	check_program(adsp);
+	mcode_print();
 	return 0;
 }

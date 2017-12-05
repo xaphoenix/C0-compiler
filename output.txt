@@ -1,494 +1,293 @@
-This is a const_declaration!
-This is a const_introduction!
-This is a variable declaration!
-This is a variable declaration!
-This is a variable declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a statements!
-This is an if!
-This is a statements!
-This is a function!
-This is a parameter declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a factor!
-This is a item!
-This is an expression!
-This is a return!
-This is a statements!
-This is a factor!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a factor!
-This is a item!
-This is an expression!
-This is a return!
-This is a statements!
-This is an if!
-This is a statements!
-This is a function!
-This is a parameter declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is an if!
-This is a statements!
-This is a function!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_introduction!
-This is a printf!
-This is a statements!
-This is a function!
-This is a parameter declaration!
-This is a factor!
-This is a factor!
-This is a item!
-This is a factor!
-This is a factor!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a return!
-This is a statements!
-This is a function!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_declaration!
-This is a const_introduction!
-This is a function!
-This is a printf!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a return!
-This is a statements!
-This is a function!
-This is a variable declaration!
-This is a variable declaration!
-This is a return!
-This is a statements!
-This is a function!
-This is a const_declaration!
-This is a const_introduction!
-This is a variable declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a statements!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a function!
-This is a parameter declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is a printf!
-This is a statements!
-This is a switch!
-This is a statements!
-This is a function!
-This is a variable declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a condition!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a statements!
-This is a statements!
-This is a while!
-This is a statements!
-This is a function!
-This is a parameter declaration!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a scanf!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a factor!
-This is a item!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a scanf!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a printf!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a factor!
-This is a item!
-This is an expression!
-This is a func use!
-This is a statements!
-This is a func use!
-This is a statements!
-This is a function!
-This is a program!
+const int n = 10 
+var int m 
+var int a 
+var int b 
+void test_array() 
+LABEL_func_0_begin: 
+var int a [10] 
+a[1] = 4 
+t0 = a[1] 
+t1 = t0 * 100 
+printf t1 
+t2 = a[1] 
+t2 == 4 
+BZ LABEL_if_0_else 
+GOTO LABEL_if_0_end 
+LABEL_if_0_else: 
+a[2] = 5 
+LABEL_if_0_end: 
+int fact() 
+int n 
+LABEL_func_1_begin: 
+n == 1 
+BZ LABEL_if_1_else 
+ret 1 
+GOTO LABEL_if_1_end 
+LABEL_if_1_else: 
+t3 = n - 1 
+push t3 
+call fact 
+t4 = ret 
+t5 = n * t4 
+ret t5 
+LABEL_if_1_end: 
+void test_logic() 
+int a 
+int b 
+char d 
+char e 
+LABEL_func_2_begin: 
+a < b 
+BZ LABEL_if_2_else 
+printf "LT is right!" 
+GOTO LABEL_if_2_end 
+LABEL_if_2_else: 
+printf "LT is wrong!" 
+LABEL_if_2_end: 
+a <= b 
+BZ LABEL_if_3_else 
+printf "LTE is right!" 
+GOTO LABEL_if_3_end 
+LABEL_if_3_else: 
+printf "LTE is wrong!" 
+LABEL_if_3_end: 
+a > b 
+BZ LABEL_if_4_else 
+printf "GT is wrong!" 
+GOTO LABEL_if_4_end 
+LABEL_if_4_else: 
+printf "GT is right!" 
+LABEL_if_4_end: 
+a >= b 
+BZ LABEL_if_5_else 
+printf "GTE is wrong!" 
+GOTO LABEL_if_5_end 
+LABEL_if_5_else: 
+printf "GTE is right!" 
+LABEL_if_5_end: 
+a != b 
+BZ LABEL_if_6_else 
+printf "NE is right!" 
+GOTO LABEL_if_6_end 
+LABEL_if_6_else: 
+printf "NE is wrong!" 
+LABEL_if_6_end: 
+a == b 
+BZ LABEL_if_7_else 
+printf "EQ is wrong!" 
+GOTO LABEL_if_7_end 
+LABEL_if_7_else: 
+printf "EQ is right!" 
+LABEL_if_7_end: 
+d < e 
+BZ LABEL_if_8_else 
+printf "LT is right!" 
+GOTO LABEL_if_8_end 
+LABEL_if_8_else: 
+printf "LT is wrong!" 
+LABEL_if_8_end: 
+d <= e 
+BZ LABEL_if_9_else 
+printf "LTE is right!" 
+GOTO LABEL_if_9_end 
+LABEL_if_9_else: 
+printf "LTE is wrong!" 
+LABEL_if_9_end: 
+d > e 
+BZ LABEL_if_10_else 
+printf "GT is wrong!" 
+GOTO LABEL_if_10_end 
+LABEL_if_10_else: 
+printf "GT is right!" 
+LABEL_if_10_end: 
+d >= e 
+BZ LABEL_if_11_else 
+printf "GTE is wrong!" 
+GOTO LABEL_if_11_end 
+LABEL_if_11_else: 
+printf "GTE is right!" 
+LABEL_if_11_end: 
+d != e 
+BZ LABEL_if_12_else 
+printf "NE is right!" 
+GOTO LABEL_if_12_end 
+LABEL_if_12_else: 
+printf "NE is wrong!" 
+LABEL_if_12_end: 
+d == e 
+BZ LABEL_if_13_else 
+printf "EQ is wrong!" 
+GOTO LABEL_if_13_end 
+LABEL_if_13_else: 
+printf "EQ is right!" 
+LABEL_if_13_end: 
+void test_charandid() 
+LABEL_func_3_begin: 
+const char _ = '_' 
+const char a = 'a' 
+const char b = 'b' 
+const char c = 'c' 
+const char d = 'd' 
+const char e = 'e' 
+const char f = 'f' 
+const char g = 'g' 
+const char h = 'h' 
+const char i = 'i' 
+const char j = 'j' 
+const char k = 'k' 
+const char l = 'l' 
+const char m = 'm' 
+const char n = 'n' 
+const char o = 'o' 
+const char p = 'p' 
+const char q = 'q' 
+const char r = 'r' 
+const char s = 's' 
+const char t = 't' 
+const char u = 'u' 
+const char v = 'v' 
+const char w = 'w' 
+const char x = 'x' 
+const char y = 'y' 
+const char z = 'z' 
+const char aa = 'A' 
+const char bb = 'B' 
+const char cc = 'C' 
+const char dd = 'D' 
+const char ee = 'E' 
+const char ff = 'F' 
+const char gg = 'G' 
+const char hh = 'H' 
+const char ii = 'I' 
+const char jj = 'J' 
+const char kk = 'K' 
+const char ll = 'L' 
+const char mm = 'M' 
+const char nn = 'N' 
+const char oo = 'O' 
+const char pp = 'P' 
+const char qq = 'Q' 
+const char rr = 'R' 
+const char ss = 'S' 
+const char tt = 'T' 
+const char uu = 'U' 
+const char vv = 'V' 
+const char ww = 'W' 
+const char xx = 'X' 
+const char yy = 'Y' 
+const char zz = 'Z' 
+const char h0 = '+' 
+const char h1 = '-' 
+const char h2 = '*' 
+const char h3 = '/' 
+const char h456789 = '4' 
+printf "success!" 
+int test_operator() 
+int x 
+LABEL_func_4_begin: 
+t6 = 3 * 4 
+t7 = 2 * 7 
+t8 = t7 / 3 
+t9 = t6 + t8 
+printf t9 
+t10 = 3 - 5 
+t11 = t10 * x 
+t12 = t11 + 8 
+printf t12 
+ret 1 
+int test_num() 
+LABEL_func_5_begin: 
+const int a = 1234567 
+const int b = 890 
+const int c = -199 
+const int d = 199 
+const int e = 0 
+char test_string() 
+LABEL_func_6_begin: 
+printf " !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~" 
+ret 0 
+void test_define() 
+LABEL_func_7_begin: 
+var int a 
+var int b 
+var int c 
+var int d 
+var char ee 
+var char e 
+var char eee 
+ret 
+void test_func() 
+LABEL_func_8_begin: 
+const int a = 10 
+var int b 
+b = 20 
+t13 = a + b 
+printf t13 
+void test_condition() 
+int x 
+LABEL_func_9_begin: 
+x == 2 
+BZ LABEL_case_0_end 
+printf "x is 2!" 
+GOTO LABEL_switch_0_end 
+LABEL_switch_0_end: 
+x == 3 
+BZ LABEL_case_1_end 
+printf "x is 3!" 
+GOTO LABEL_switch_0_end 
+LABEL_switch_0_end: 
+printf "x is unknown!" 
+LABEL_switch_0_end: 
+void test_while() 
+LABEL_func_10_begin: 
+var int i 
+i = 0 
+LABEL_while_0_begin: 
+i < 5 
+BZ LABEL_while_0_end 
+printf i 
+t14 = i + 1 
+i = t14 
+GOTO LABEL_while_0_begin 
+LABEL_while_0_end: 
+void main() 
+LABEL_func_11_begin: 
+push 3 
+push 4 
+push 'a' 
+push 'b' 
+call test_logic 
+push 4 
+push 3 
+push 'b' 
+push 'a' 
+call test_logic 
+push 3 
+push 3 
+push 'a' 
+push 'a' 
+call test_logic 
+push 2 
+call test_operator 
+call test_charandid 
+call test_num 
+call test_string 
+call test_define 
+call test_func 
+scanf m 
+push m 
+call fact 
+t15 = ret 
+t16 = t15 + 'a' 
+printf t16 
+scanf a 
+scanf b 
+printf a 
+call test_array 
+push 2 
+call test_condition 
+push 3 
+call test_condition 
+push 4 
+call test_condition 
+call test_while 

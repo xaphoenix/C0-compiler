@@ -6,9 +6,9 @@ void check_func(int rflag, int &addr);
 void check_statements(int pr);
 void check_program(int addr);
 void check_func_use(string id,int re);
-void check_factor();
-void check_item();
-void check_expression();
+string check_factor();
+string check_item();
+string check_expression();
 void check_printf();
 void check_scanf();
 void check_condition(int pr);
@@ -206,7 +206,7 @@ void check_parameter_declaration(vector<pair<int,string> > &para, int &addr)
 				}
 				else
 				{
-					insert_indent(type, id, 0, 0, addr);
+					insert_indent(type, id, 0, 0, addr, 0);
 					para.push_back(make_pair(type, id));
 					getsym();
 				}
@@ -234,8 +234,9 @@ void check_parameter_declaration(vector<pair<int,string> > &para, int &addr)
 	if (sym != lbrace) print_compile_error(21);
 	if (grammar_debug) printf("This is a parameter declaration!\n");
 }
-void check_factor()
+string check_factor()
 {
+	string nvar = "";
 	if (sym == ident)
 	{
 		string id = now_string;
@@ -246,25 +247,32 @@ void check_factor()
 			if (sym == lbracket)
 			{
 				getsym();
-				check_expression();
+				string tvar = check_expression();
 				if (sym == rbracket) getsym();
 				else print_compile_error(18);
 				if (!exist_array(id, lv))
 				{
 					print_compile_error(26);
 					skip(semicolon, rbrace);
-				} 
+				}
+				mcode_insert(LARRAY, nvar = tmp_var(), "=", id+"["+tvar+"]") ;
 			}
 			else
 			{
 				if (exist_func(id, lv)) 
 				{
 					check_func_use(id, 1);
+					nvar = tmp_var();
+					mcode_insert(RET, nvar, "=", "ret");
 				}
 				else if (!exist_indent(id, lv))
 				{
 					print_compile_error(26);
 					skip(semicolon, rbrace);
+				}
+				else
+				{
+					nvar = id;
 				}
 			}
 		}
@@ -277,20 +285,33 @@ void check_factor()
 	else if (sym == lparent)
 	{
 		getsym();
-		check_expression();
+		nvar = check_expression();
 		if (sym == rparent) getsym();
 		else print_compile_error(15);
 	}
-	else if (sym == numsy) getsym();
+	else if (sym == numsy) 
+	{
+		nvar = now_string;
+		getsym();
+	}
 	else if (sym == plusy || sym == minusy)
 	{
 		int ff = 1;
 		if (sym == minusy)  ff = -1;
 		getsym();
-		if (sym == numsy) getsym();
+		if (sym == numsy) 
+		{
+			nvar = now_string;
+			if (ff == -1) nvar = "-" + nvar;
+			getsym();
+		}
 		else print_compile_error(16);
 	}
-	else if (sym == chsy) getsym();
+	else if (sym == chsy) 
+	{
+		nvar = "\'" + now_string + "\'";
+		getsym();
+	}
 	else
 	{
 		print_compile_error(27);
@@ -298,32 +319,55 @@ void check_factor()
 	}
 		
 	if (grammar_debug) printf("This is a factor!\n");
+	return nvar;
 }
-void check_item()
+string check_item()
 {
-	check_factor();
+	string nvar = "";
+	string tvar1, tvar2;
+	nvar = tvar1 = check_factor();
 	while (sym == timesy || sym == divsy)
 	{
+		string oper = sym;
 		getsym();
-		check_factor();
+		tvar2 = check_factor();
+		nvar = tmp_var();
+		if (oper == timesy) mcode_insert(ASSIGN, nvar, "=", tvar1, "*", tvar2);
+		else mcode_insert(ASSIGN, nvar, "=", tvar1, "/", tvar2);
+		tvar1 = nvar;
 	}
 	if (grammar_debug) printf("This is a item!\n");
+	return nvar;
 }
-void check_expression()
+string check_expression()
 {
+	string nvar = "";
+	string tvar1, tvar2;
 	int ff = 1;
 	if (sym == plusy || sym == minusy)
 	{
 		if (sym == minusy) ff = -1;
 		getsym();
 	}
-	check_item();
+	nvar = tvar1 = check_item();
+	if (ff == -1)
+	{
+		nvar = tmp_var();
+		mcode_insert(ASSIGN, nvar, "=", "0", "-", tvar1);
+		tvar1 = nvar;
+	}
 	while (sym == plusy || sym == minusy)
 	{
+		string oper = sym;
 		getsym();
-		check_item();
+		tvar2 = check_item();
+		nvar = tmp_var();
+		if (oper == plusy) mcode_insert(ASSIGN, nvar, "=", tvar1, "+", tvar2);
+		else mcode_insert(ASSIGN, nvar, "=", tvar1, "-", tvar2);
+		tvar1 = nvar;
 	}
 	if (grammar_debug) printf("This is an expression!\n");
+	return nvar;
 }
 
 void check_func_use(string id, int re)
@@ -338,7 +382,8 @@ void check_func_use(string id, int re)
 			getsym();
 			for (int i = 0; i < tmp.para.size(); i++)
 			{
-				check_expression();
+				string tvar = check_expression();
+				mcode_insert(PUSH, "push", tvar);
 				if (i == tmp.para.size() - 1) break;
 				if (sym == comma) getsym();
 				else print_compile_error(32);
@@ -353,38 +398,53 @@ void check_func_use(string id, int re)
 	}
 	if (re == 1 && tmp.type == VOID) print_compile_error(30);
 	if (grammar_debug) printf("This is a func use!\n");
+	mcode_insert(CALL, "call", id);
 }
 void check_condition()
 {
-	check_expression();
+	string tvar1, tvar2;
+	tvar1 = check_expression();
 	if (sym == lss || sym == leq || sym == gtr || sym == geq || sym == neq || sym == eql)
 	{
+		string oper = now_string;
 		getsym();
-		check_expression();
+		tvar2 = check_expression();
+		mcode_insert(LOGIC, tvar1, oper, tvar2);
 	}
+	else mcode_insert(LOGIC, tvar1);
 	if (grammar_debug) printf("This is a condition!\n");
 }
 void check_if(int addr)
 {
+	string else_label = if_else(), end_label = if_end();
 	if (sym == lparent) getsym();
 	else print_compile_error(28);
 	check_condition();
+	mcode_insert(GO, "BZ", else_label);
 	if (sym == rparent) getsym();
 	else print_compile_error(15);
 	check_statements(addr);
+	mcode_insert(GO, "GOTO", end_label);
+	mcode_insert(LABEL, else_label + ":");
 	if (sym == elsesy) getsym();
 	else print_compile_error(35);
 	check_statements(addr);
+	mcode_insert(LABEL, end_label + ":");
 	if (grammar_debug) printf("This is an if!\n");
 }
 void check_while(int addr)
 {
+	string begin_label = while_begin(), end_label = while_end();
 	if (sym == lparent) getsym();
 	else print_compile_error(28);
+	mcode_insert(LABEL, begin_label + ":");
 	check_condition();
+	mcode_insert(GO, "BZ", end_label);
 	if (sym == rparent) getsym();
 	else print_compile_error(15);
 	check_statements(addr);
+	mcode_insert(GO, "GOTO", begin_label);
+	mcode_insert(LABEL, end_label + ":");
 	if (grammar_debug) printf("This is a while!\n");
 }
 void check_scanf()
@@ -406,6 +466,7 @@ void check_scanf()
 			{
 				indent_table tmp = find_indent(id, lv);
 				if (tmp.con == 1) print_compile_error(37);
+				mcode_insert(SCAN, "scanf", id);
 				getsym();
 			}
 			else
@@ -439,6 +500,7 @@ void check_scanf()
 					indent_table tmp = find_indent(id, lv);
 					if (tmp.con == 1) print_compile_error(37);
 					getsym();
+					mcode_insert(SCAN, "scanf", id);
 				}
 				else
 				{
@@ -461,18 +523,25 @@ void check_scanf()
 }
 void check_printf()
 {
+	string tvar;
 	if (sym == lparent) getsym();
 	else print_compile_error(29);
-	if (sym == rparent) getsym();
+	if (sym == rparent) 
+	{
+		mcode_insert(PRINT, "printf");
+		getsym();
+	}
 	else if (sym == strsy)
 	{
+		mcode_insert(PRINT, "printf", "\"" + now_string + "\"");
 		getsym();
 		if (sym == comma)
 		{
 			getsym();
-			check_expression();
+			tvar = check_expression();
 			if (sym == rparent) getsym();
 			else print_compile_error(15);
+			mcode_insert(PRINT, "printf", tvar);
 		}
 		else
 		{
@@ -482,7 +551,8 @@ void check_printf()
 	}
 	else 
 	{
-		check_expression();
+		tvar = check_expression();
+		mcode_insert(PRINT, "printf", tvar);
 		if (sym == rparent) getsym();
 		else print_compile_error(15);
 	}
@@ -490,30 +560,49 @@ void check_printf()
 	else print_compile_error(10);
 	if (grammar_debug) printf("This is a printf!\n");
 }
-void check_case(int pr)
+void check_case(int pr, string tvar1, string end_label)
 {
-	if (sym == numsy) getsym();
-	else if (sym == chsy) getsym();
+	string tvar2 = "";
+	string cend_label = case_end();
+	if (sym == numsy) 
+	{
+		tvar2 = now_string;
+		getsym();
+	}
+	else if (sym == chsy) 
+	{
+		tvar2 = now_string;
+		getsym();
+	}
 	else if (sym == plusy || sym == minusy)
 	{
 		int ff = 1;
 		if (sym == minusy) ff = -1;
 		getsym();
-		if (sym == numsy) getsym();
+		if (sym == numsy) 
+		{
+			tvar2 = now_string;
+			if (ff == -1) tvar2 = "-" + tvar2;
+			getsym();
+		}
 		else print_compile_error(33);
 	}
 	else print_compile_error(33);
 	if (sym == colon) getsym();
 	else print_compile_error(34);
+	mcode_insert(LOGIC, tvar1, "==", tvar2);
+	mcode_insert(GO, "BZ", cend_label);
 	check_statements(pr);
+	mcode_insert(GO, "GOTO", end_label);
+	mcode_insert(LABEL, end_label + ":");
 }
-void check_casetable(int pr)
+void check_casetable(int pr, string tvar1, string end_label)
 {
-	check_case(pr);
+	check_case(pr, tvar1, end_label);
 	while (sym == casesy) 
 	{
 		getsym();
-		check_case(pr);
+		check_case(pr, tvar1, end_label);
 	}
 }
 void check_default(int pr)
@@ -524,15 +613,17 @@ void check_default(int pr)
 }
 void check_switch(int pr)
 {
+	string end_label = switch_end();
+	string tvar;
 	if (sym == lparent) getsym();
 	else print_compile_error(28);
-	check_expression();
+	tvar = check_expression();
 	if (sym == rparent) getsym();
 	else print_compile_error(15);
 	if (sym == lbrace) getsym();
 	else print_compile_error(21);
 	getsym();
-	check_casetable(pr);
+	check_casetable(pr, tvar, end_label);
 	if (sym == defaultsy) 
 	{
 		getsym();
@@ -540,6 +631,7 @@ void check_switch(int pr)
 	}
 	if (sym == rbrace) getsym();
 	else print_compile_error(22);
+	mcode_insert(LABEL, end_label + ":");
 	if (grammar_debug) printf("This is a switch!\n");
 }
 void check_statements(int pr)
@@ -567,7 +659,8 @@ void check_statements(int pr)
 				getsym();
 				if (sym == becomes) getsym();
 				else print_compile_error(12);
-				check_expression();
+				string tvar= check_expression();
+				mcode_insert(ASSIGN, id, "=", tvar);
 				if (sym == semicolon) getsym();
 				else print_compile_error(10);
 				indent_table tmp = find_indent(id, lv);
@@ -578,12 +671,13 @@ void check_statements(int pr)
 				getsym();
 				if (sym == lbracket) getsym();
 				else print_compile_error(36);
-				check_expression();
+				string tvar1 = check_expression();
 				if (sym == rbracket) getsym();
 				else print_compile_error(17);
 				if (sym == becomes) getsym();
 				else print_compile_error(12);
-				check_expression();
+				string tvar2 = check_expression();
+				mcode_insert(SARRAY, id + "[" + tvar1 + "]", "=", tvar2);
 				if (sym == semicolon) getsym();
 				else print_compile_error(10);
 			}
@@ -617,16 +711,23 @@ void check_statements(int pr)
 	else if (sym == returnsy)
 	{
 		getsym();
-		if (pr == 0);
+		if (pr == 0)
+		{
+			mcode_insert(RECALL, "ret");
+		}
 		else
 		{
 			if (sym == lparent) getsym();
 			else print_compile_error(28);
-			check_expression();
+			string tvar = check_expression();
+			mcode_insert(RECALL, "ret", tvar);
 			if (sym == rparent) getsym();
 			else print_compile_error(15);
 		}
-		if (sym == semicolon) getsym();
+		if (sym == semicolon) 
+		{
+			getsym();
+		}
 		else print_compile_error(10);
 		if (grammar_debug) printf("This is a return!\n");
 	}
@@ -648,6 +749,8 @@ void check_statements(int pr)
 }
 void check_func(int pr,int &addr)
 {
+	string begin_label = func_begin();
+	mcode_insert(LABEL, begin_label + ":");
 	if (sym == constsy) check_const_introduction(addr);
 	while (1)
 	{

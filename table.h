@@ -28,12 +28,32 @@ map<string,indent_table> idTable[maxlevel];
 map<string,array_table> arrayTable[maxlevel];
 map<string,func_table> funcTable[maxlevel];
 
-void insert_indent(int type, string id, int con, int val, int &addr)
+void insert_indent(int type, string id, int con, int val, int &addr, int print = 1)
 {
 	if (level == 0 && id == "main")
 	{
 		print_compile_error(20);
 		return;
+	}
+	if (print)
+	{
+		if (con) 
+		{
+			string tmp = "";
+			if (val < 0) 
+			{
+				tmp = "-";
+				val = abs(val);
+			}
+			tmp = tmp + num2string(val);
+			if (type == INT) mcode_insert(CONST, "const", "int", id, "=", tmp);
+			else mcode_insert(CONST,"const", "char", id, "=", "\'" + num2char2string(val) + "\'"); 
+		}
+		else
+		{
+			if (type == INT) mcode_insert(VAR, "var", "int", id);
+			else mcode_insert(VAR, "var", "char", id);
+		}
 	}
 	indent_table tmp;
 	tmp.type = type;
@@ -53,6 +73,8 @@ void insert_array(int type, string id, int upper, int &addr)
 		print_compile_error(20);
 		return;
 	}
+	if (type == INT) mcode_insert(VAR, "var", "int", id, "[" + num2string(upper) + "]");
+	else mcode_insert(VAR, "var", "char", id, "[" + num2string(upper) + "]");
 	array_table tmp;
 	tmp.type = type;
 	tmp.id = id;
@@ -71,14 +93,25 @@ void insert_func(int type, string id, vector<pair<int, string> > para, int &addr
 		if (para.size() != 0) print_compile_error(19), para.clear();
 		main_flag = 1;
 	}
+	if (type == INT) mcode_insert(FUNC, "int", id+"()");
+	else if (type == CHAR) mcode_insert(FUNC, "char", id+"()");
+	else mcode_insert(FUNC, "void", id+"()");
 	func_table tmp;
 	tmp.type = type;
 	tmp.id = id;
 	tmp.para = para;
 	tmp.size = 8;
 	for (int i = 0; i < para.size(); i++)
-		if (para[i].first == CHAR) tmp.size += 1;
-		else tmp.size += 4;
+		if (para[i].first == CHAR) 
+		{
+			tmp.size += 1;
+			mcode_insert(PARA, "char", para[i].second);
+		}
+		else 
+		{
+			tmp.size += 4;
+			mcode_insert(PARA, "int", para[i].second);
+		}
 	tmp.addr = addr;
 	addr -= tmp.size;
 	funcTable[level][id] = tmp;

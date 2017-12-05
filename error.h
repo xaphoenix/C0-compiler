@@ -9,6 +9,7 @@ void print_fatal_error(int no)
 }
 void print_compile_error(int no)
 {
+	error_flag = 1;
 	compile_msg[0] = "Error. Expected more characters at the end of file.";
 	compile_msg[1] = "Error. " + now_position() + "Illegal character in single colon.";
 	compile_msg[2] = "Error. " + now_position() + "Unpair single colon.";
