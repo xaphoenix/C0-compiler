@@ -42,6 +42,7 @@ void test_logic (int a,int b,char d,char e)
 	else printf("NE is wrong!");
 	if (d == e) printf("EQ is wrong!");
 	else printf("EQ is right!");
+	printf();
 }
 void test_charandid
 {

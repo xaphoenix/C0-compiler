@@ -18,8 +18,9 @@ using namespace std;
 #include"mcode.h"
 #include"table.h"
 #include"grammar.h"
+#include"tcode.h"
 
-int adsp;
+int adsp = -16;
 int main()
 {
 	init_read();
@@ -27,6 +28,9 @@ int main()
 	//test_word();
 	getch();
 	check_program(adsp);
-	mcode_print();
+	//mcode_print();
+	tcode_init();
+	tcode_output();
+	//mcode_print();
 	return 0;
 }

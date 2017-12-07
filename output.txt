@@ -1,293 +1,1033 @@
-const int n = 10 
-var int m 
-var int a 
-var int b 
-void test_array() 
-LABEL_func_0_begin: 
-var int a [10] 
-a[1] = 4 
-t0 = a[1] 
-t1 = t0 * 100 
-printf t1 
-t2 = a[1] 
-t2 == 4 
-BZ LABEL_if_0_else 
-GOTO LABEL_if_0_end 
-LABEL_if_0_else: 
-a[2] = 5 
-LABEL_if_0_end: 
-int fact() 
-int n 
-LABEL_func_1_begin: 
-n == 1 
-BZ LABEL_if_1_else 
-ret 1 
-GOTO LABEL_if_1_end 
-LABEL_if_1_else: 
-t3 = n - 1 
-push t3 
-call fact 
-t4 = ret 
-t5 = n * t4 
-ret t5 
-LABEL_if_1_end: 
-void test_logic() 
-int a 
-int b 
-char d 
-char e 
-LABEL_func_2_begin: 
-a < b 
-BZ LABEL_if_2_else 
-printf "LT is right!" 
-GOTO LABEL_if_2_end 
-LABEL_if_2_else: 
-printf "LT is wrong!" 
-LABEL_if_2_end: 
-a <= b 
-BZ LABEL_if_3_else 
-printf "LTE is right!" 
-GOTO LABEL_if_3_end 
-LABEL_if_3_else: 
-printf "LTE is wrong!" 
-LABEL_if_3_end: 
-a > b 
-BZ LABEL_if_4_else 
-printf "GT is wrong!" 
-GOTO LABEL_if_4_end 
-LABEL_if_4_else: 
-printf "GT is right!" 
-LABEL_if_4_end: 
-a >= b 
-BZ LABEL_if_5_else 
-printf "GTE is wrong!" 
-GOTO LABEL_if_5_end 
-LABEL_if_5_else: 
-printf "GTE is right!" 
-LABEL_if_5_end: 
-a != b 
-BZ LABEL_if_6_else 
-printf "NE is right!" 
-GOTO LABEL_if_6_end 
-LABEL_if_6_else: 
-printf "NE is wrong!" 
-LABEL_if_6_end: 
-a == b 
-BZ LABEL_if_7_else 
-printf "EQ is wrong!" 
-GOTO LABEL_if_7_end 
-LABEL_if_7_else: 
-printf "EQ is right!" 
-LABEL_if_7_end: 
-d < e 
-BZ LABEL_if_8_else 
-printf "LT is right!" 
-GOTO LABEL_if_8_end 
-LABEL_if_8_else: 
-printf "LT is wrong!" 
-LABEL_if_8_end: 
-d <= e 
-BZ LABEL_if_9_else 
-printf "LTE is right!" 
-GOTO LABEL_if_9_end 
-LABEL_if_9_else: 
-printf "LTE is wrong!" 
-LABEL_if_9_end: 
-d > e 
-BZ LABEL_if_10_else 
-printf "GT is wrong!" 
-GOTO LABEL_if_10_end 
-LABEL_if_10_else: 
-printf "GT is right!" 
-LABEL_if_10_end: 
-d >= e 
-BZ LABEL_if_11_else 
-printf "GTE is wrong!" 
-GOTO LABEL_if_11_end 
-LABEL_if_11_else: 
-printf "GTE is right!" 
-LABEL_if_11_end: 
-d != e 
-BZ LABEL_if_12_else 
-printf "NE is right!" 
-GOTO LABEL_if_12_end 
-LABEL_if_12_else: 
-printf "NE is wrong!" 
-LABEL_if_12_end: 
-d == e 
-BZ LABEL_if_13_else 
-printf "EQ is wrong!" 
-GOTO LABEL_if_13_end 
-LABEL_if_13_else: 
-printf "EQ is right!" 
-LABEL_if_13_end: 
-void test_charandid() 
-LABEL_func_3_begin: 
-const char _ = '_' 
-const char a = 'a' 
-const char b = 'b' 
-const char c = 'c' 
-const char d = 'd' 
-const char e = 'e' 
-const char f = 'f' 
-const char g = 'g' 
-const char h = 'h' 
-const char i = 'i' 
-const char j = 'j' 
-const char k = 'k' 
-const char l = 'l' 
-const char m = 'm' 
-const char n = 'n' 
-const char o = 'o' 
-const char p = 'p' 
-const char q = 'q' 
-const char r = 'r' 
-const char s = 's' 
-const char t = 't' 
-const char u = 'u' 
-const char v = 'v' 
-const char w = 'w' 
-const char x = 'x' 
-const char y = 'y' 
-const char z = 'z' 
-const char aa = 'A' 
-const char bb = 'B' 
-const char cc = 'C' 
-const char dd = 'D' 
-const char ee = 'E' 
-const char ff = 'F' 
-const char gg = 'G' 
-const char hh = 'H' 
-const char ii = 'I' 
-const char jj = 'J' 
-const char kk = 'K' 
-const char ll = 'L' 
-const char mm = 'M' 
-const char nn = 'N' 
-const char oo = 'O' 
-const char pp = 'P' 
-const char qq = 'Q' 
-const char rr = 'R' 
-const char ss = 'S' 
-const char tt = 'T' 
-const char uu = 'U' 
-const char vv = 'V' 
-const char ww = 'W' 
-const char xx = 'X' 
-const char yy = 'Y' 
-const char zz = 'Z' 
-const char h0 = '+' 
-const char h1 = '-' 
-const char h2 = '*' 
-const char h3 = '/' 
-const char h456789 = '4' 
-printf "success!" 
-int test_operator() 
-int x 
-LABEL_func_4_begin: 
-t6 = 3 * 4 
-t7 = 2 * 7 
-t8 = t7 / 3 
-t9 = t6 + t8 
-printf t9 
-t10 = 3 - 5 
-t11 = t10 * x 
-t12 = t11 + 8 
-printf t12 
-ret 1 
-int test_num() 
-LABEL_func_5_begin: 
-const int a = 1234567 
-const int b = 890 
-const int c = -199 
-const int d = 199 
-const int e = 0 
-char test_string() 
-LABEL_func_6_begin: 
-printf " !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~" 
-ret 0 
-void test_define() 
-LABEL_func_7_begin: 
-var int a 
-var int b 
-var int c 
-var int d 
-var char ee 
-var char e 
-var char eee 
-ret 
-void test_func() 
-LABEL_func_8_begin: 
-const int a = 10 
-var int b 
-b = 20 
-t13 = a + b 
-printf t13 
-void test_condition() 
-int x 
-LABEL_func_9_begin: 
-x == 2 
-BZ LABEL_case_0_end 
-printf "x is 2!" 
-GOTO LABEL_switch_0_end 
-LABEL_switch_0_end: 
-x == 3 
-BZ LABEL_case_1_end 
-printf "x is 3!" 
-GOTO LABEL_switch_0_end 
-LABEL_switch_0_end: 
-printf "x is unknown!" 
-LABEL_switch_0_end: 
-void test_while() 
-LABEL_func_10_begin: 
-var int i 
-i = 0 
-LABEL_while_0_begin: 
-i < 5 
-BZ LABEL_while_0_end 
-printf i 
-t14 = i + 1 
-i = t14 
-GOTO LABEL_while_0_begin 
-LABEL_while_0_end: 
-void main() 
-LABEL_func_11_begin: 
-push 3 
-push 4 
-push 'a' 
-push 'b' 
-call test_logic 
-push 4 
-push 3 
-push 'b' 
-push 'a' 
-call test_logic 
-push 3 
-push 3 
-push 'a' 
-push 'a' 
-call test_logic 
-push 2 
-call test_operator 
-call test_charandid 
-call test_num 
-call test_string 
-call test_define 
-call test_func 
-scanf m 
-push m 
-call fact 
-t15 = ret 
-t16 = t15 + 'a' 
-printf t16 
-scanf a 
-scanf b 
-printf a 
-call test_array 
-push 2 
-call test_condition 
-push 3 
-call test_condition 
-push 4 
-call test_condition 
-call test_while 
+.data
+	str_0: .asciiz "LT is right!"
+	str_1: .asciiz "LT is wrong!"
+	str_2: .asciiz "LTE is right!"
+	str_3: .asciiz "LTE is wrong!"
+	str_4: .asciiz "GT is wrong!"
+	str_5: .asciiz "GT is right!"
+	str_6: .asciiz "GTE is wrong!"
+	str_7: .asciiz "GTE is right!"
+	str_8: .asciiz "NE is right!"
+	str_9: .asciiz "NE is wrong!"
+	str_10: .asciiz "EQ is wrong!"
+	str_11: .asciiz "EQ is right!"
+	str_12: .asciiz "LT is right!"
+	str_13: .asciiz "LT is wrong!"
+	str_14: .asciiz "LTE is right!"
+	str_15: .asciiz "LTE is wrong!"
+	str_16: .asciiz "GT is wrong!"
+	str_17: .asciiz "GT is right!"
+	str_18: .asciiz "GTE is wrong!"
+	str_19: .asciiz "GTE is right!"
+	str_20: .asciiz "NE is right!"
+	str_21: .asciiz "NE is wrong!"
+	str_22: .asciiz "EQ is wrong!"
+	str_23: .asciiz "EQ is right!"
+	str_24: .asciiz "\n"
+	str_25: .asciiz "success!"
+	str_26: .asciiz " !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+	str_27: .asciiz "x is 2!"
+	str_28: .asciiz "x is 3!"
+	str_29: .asciiz "x is unknown!"
+.text
+	li	$t0, 32
+	sub	$sp, $sp, $t0
+	li	$t0, 10
+	addi	$t1, $sp, 32
+	sw	$t0, -16($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 20
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_11_begin
+LABEL_func_0_begin:
+	addi	$t0, $sp, 28
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 4
+	li	$t2, 1
+	li	$t3, 4
+	mult	$t2, $t3
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sub	$t1, $t1, $t2
+	sw	$t0, -16($t1)
+	li	$t2, 1
+	li	$t3, 4
+	mult	$t2, $t3
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sub	$t1, $t1, $t2
+	lw	$t0, -16($t1)
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sw	$t0, -56($t1)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -56($t7)
+	li	$t1, 100
+	mult	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t3, -4($t7)
+	sw	$t2, -60($t3)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -60($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	li	$t2, 1
+	li	$t3, 4
+	mult	$t2, $t3
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sub	$t1, $t1, $t2
+	lw	$t0, -16($t1)
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sw	$t0, -68($t1)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -68($t7)
+	li	$t1, 4
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_0_else
+	j	LABEL_if_0_end
+LABEL_if_0_else:
+	li	$t0, 5
+	li	$t2, 2
+	li	$t3, 4
+	mult	$t2, $t3
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sub	$t1, $t1, $t2
+	sw	$t0, -16($t1)
+LABEL_if_0_end:
+	addi	$sp, $sp, 28
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_1_begin:
+	addi	$t0, $sp, 28
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 1
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_1_else
+	li	$t0, 1
+	addi	$t1, $sp, 28
+	sw	$t0, -12($t1)
+	addi	$sp, $sp, 28
+	lw	$ra, -8($sp)
+	jr	$ra
+	j	LABEL_if_1_end
+LABEL_if_1_else:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 1
+	sub	$t2, $t0, $t1
+	addi	$t7, $sp, 28
+	lw	$t3, -4($t7)
+	sw	$t2, -20($t3)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -20($t7)
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_1_begin
+	lw	$t0, -12($sp)
+	addi	$t7, $sp, 28
+	lw	$t1, -4($t7)
+	sw	$t0, -24($t1)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -24($t7)
+	mult	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 28
+	lw	$t3, -4($t7)
+	sw	$t2, -28($t3)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -28($t7)
+	addi	$t1, $sp, 28
+	sw	$t0, -12($t1)
+	addi	$sp, $sp, 28
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_if_1_end:
+	addi	$sp, $sp, 28
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_2_begin:
+	addi	$t0, $sp, 28
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	slt	$t6, $t0, $t1
+	beq	$t6, $0, LABEL_if_2_else
+	la	$a0, str_0
+	li	$v0, 4
+	syscall
+	j	LABEL_if_2_end
+LABEL_if_2_else:
+	la	$a0, str_1
+	li	$v0, 4
+	syscall
+LABEL_if_2_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	sub	$t2, $t0, $t1
+	slti	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_3_else
+	la	$a0, str_2
+	li	$v0, 4
+	syscall
+	j	LABEL_if_3_end
+LABEL_if_3_else:
+	la	$a0, str_3
+	li	$v0, 4
+	syscall
+LABEL_if_3_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	slt	$t6, $t1, $t0
+	beq	$t6, $0, LABEL_if_4_else
+	la	$a0, str_4
+	li	$v0, 4
+	syscall
+	j	LABEL_if_4_end
+LABEL_if_4_else:
+	la	$a0, str_5
+	li	$v0, 4
+	syscall
+LABEL_if_4_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	sub	$t2, $t1, $t0
+	slti	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_5_else
+	la	$a0, str_6
+	li	$v0, 4
+	syscall
+	j	LABEL_if_5_end
+LABEL_if_5_else:
+	la	$a0, str_7
+	li	$v0, 4
+	syscall
+LABEL_if_5_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	li	$t2, 1
+	sub	$t6, $t2, $t6
+	beq	$t6, $0, LABEL_if_6_else
+	la	$a0, str_8
+	li	$v0, 4
+	syscall
+	j	LABEL_if_6_end
+LABEL_if_6_else:
+	la	$a0, str_9
+	li	$v0, 4
+	syscall
+LABEL_if_6_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_7_else
+	la	$a0, str_10
+	li	$v0, 4
+	syscall
+	j	LABEL_if_7_end
+LABEL_if_7_else:
+	la	$a0, str_11
+	li	$v0, 4
+	syscall
+LABEL_if_7_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	slt	$t6, $t0, $t1
+	beq	$t6, $0, LABEL_if_8_else
+	la	$a0, str_12
+	li	$v0, 4
+	syscall
+	j	LABEL_if_8_end
+LABEL_if_8_else:
+	la	$a0, str_13
+	li	$v0, 4
+	syscall
+LABEL_if_8_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	sub	$t2, $t0, $t1
+	slti	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_9_else
+	la	$a0, str_14
+	li	$v0, 4
+	syscall
+	j	LABEL_if_9_end
+LABEL_if_9_else:
+	la	$a0, str_15
+	li	$v0, 4
+	syscall
+LABEL_if_9_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	slt	$t6, $t1, $t0
+	beq	$t6, $0, LABEL_if_10_else
+	la	$a0, str_16
+	li	$v0, 4
+	syscall
+	j	LABEL_if_10_end
+LABEL_if_10_else:
+	la	$a0, str_17
+	li	$v0, 4
+	syscall
+LABEL_if_10_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	sub	$t2, $t1, $t0
+	slti	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_11_else
+	la	$a0, str_18
+	li	$v0, 4
+	syscall
+	j	LABEL_if_11_end
+LABEL_if_11_else:
+	la	$a0, str_19
+	li	$v0, 4
+	syscall
+LABEL_if_11_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	li	$t2, 1
+	sub	$t6, $t2, $t6
+	beq	$t6, $0, LABEL_if_12_else
+	la	$a0, str_20
+	li	$v0, 4
+	syscall
+	j	LABEL_if_12_end
+LABEL_if_12_else:
+	la	$a0, str_21
+	li	$v0, 4
+	syscall
+LABEL_if_12_end:
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	addi	$t7, $sp, 28
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_if_13_else
+	la	$a0, str_22
+	li	$v0, 4
+	syscall
+	j	LABEL_if_13_end
+LABEL_if_13_else:
+	la	$a0, str_23
+	li	$v0, 4
+	syscall
+LABEL_if_13_end:
+	la	$a0, str_24
+	li	$v0, 4
+	syscall
+	addi	$sp, $sp, 28
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_3_begin:
+	addi	$t0, $sp, 12
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 95
+	addi	$t1, $sp, 12
+	sw	$t0, -16($t1)
+	li	$t0, 97
+	addi	$t1, $sp, 12
+	sw	$t0, -20($t1)
+	li	$t0, 98
+	addi	$t1, $sp, 12
+	sw	$t0, -24($t1)
+	li	$t0, 99
+	addi	$t1, $sp, 12
+	sw	$t0, -28($t1)
+	li	$t0, 100
+	addi	$t1, $sp, 12
+	sw	$t0, -32($t1)
+	li	$t0, 101
+	addi	$t1, $sp, 12
+	sw	$t0, -36($t1)
+	li	$t0, 102
+	addi	$t1, $sp, 12
+	sw	$t0, -40($t1)
+	li	$t0, 103
+	addi	$t1, $sp, 12
+	sw	$t0, -44($t1)
+	li	$t0, 104
+	addi	$t1, $sp, 12
+	sw	$t0, -48($t1)
+	li	$t0, 105
+	addi	$t1, $sp, 12
+	sw	$t0, -52($t1)
+	li	$t0, 106
+	addi	$t1, $sp, 12
+	sw	$t0, -56($t1)
+	li	$t0, 107
+	addi	$t1, $sp, 12
+	sw	$t0, -60($t1)
+	li	$t0, 108
+	addi	$t1, $sp, 12
+	sw	$t0, -64($t1)
+	li	$t0, 109
+	addi	$t1, $sp, 12
+	sw	$t0, -68($t1)
+	li	$t0, 110
+	addi	$t1, $sp, 12
+	sw	$t0, -72($t1)
+	li	$t0, 111
+	addi	$t1, $sp, 12
+	sw	$t0, -76($t1)
+	li	$t0, 112
+	addi	$t1, $sp, 12
+	sw	$t0, -80($t1)
+	li	$t0, 113
+	addi	$t1, $sp, 12
+	sw	$t0, -84($t1)
+	li	$t0, 114
+	addi	$t1, $sp, 12
+	sw	$t0, -88($t1)
+	li	$t0, 115
+	addi	$t1, $sp, 12
+	sw	$t0, -92($t1)
+	li	$t0, 116
+	addi	$t1, $sp, 12
+	sw	$t0, -96($t1)
+	li	$t0, 117
+	addi	$t1, $sp, 12
+	sw	$t0, -100($t1)
+	li	$t0, 118
+	addi	$t1, $sp, 12
+	sw	$t0, -104($t1)
+	li	$t0, 119
+	addi	$t1, $sp, 12
+	sw	$t0, -108($t1)
+	li	$t0, 120
+	addi	$t1, $sp, 12
+	sw	$t0, -112($t1)
+	li	$t0, 121
+	addi	$t1, $sp, 12
+	sw	$t0, -116($t1)
+	li	$t0, 122
+	addi	$t1, $sp, 12
+	sw	$t0, -120($t1)
+	li	$t0, 65
+	addi	$t1, $sp, 12
+	sw	$t0, -124($t1)
+	li	$t0, 66
+	addi	$t1, $sp, 12
+	sw	$t0, -128($t1)
+	li	$t0, 67
+	addi	$t1, $sp, 12
+	sw	$t0, -132($t1)
+	li	$t0, 68
+	addi	$t1, $sp, 12
+	sw	$t0, -136($t1)
+	li	$t0, 69
+	addi	$t1, $sp, 12
+	sw	$t0, -140($t1)
+	li	$t0, 70
+	addi	$t1, $sp, 12
+	sw	$t0, -144($t1)
+	li	$t0, 71
+	addi	$t1, $sp, 12
+	sw	$t0, -148($t1)
+	li	$t0, 72
+	addi	$t1, $sp, 12
+	sw	$t0, -152($t1)
+	li	$t0, 73
+	addi	$t1, $sp, 12
+	sw	$t0, -156($t1)
+	li	$t0, 74
+	addi	$t1, $sp, 12
+	sw	$t0, -160($t1)
+	li	$t0, 75
+	addi	$t1, $sp, 12
+	sw	$t0, -164($t1)
+	li	$t0, 76
+	addi	$t1, $sp, 12
+	sw	$t0, -168($t1)
+	li	$t0, 77
+	addi	$t1, $sp, 12
+	sw	$t0, -172($t1)
+	li	$t0, 78
+	addi	$t1, $sp, 12
+	sw	$t0, -176($t1)
+	li	$t0, 79
+	addi	$t1, $sp, 12
+	sw	$t0, -180($t1)
+	li	$t0, 80
+	addi	$t1, $sp, 12
+	sw	$t0, -184($t1)
+	li	$t0, 81
+	addi	$t1, $sp, 12
+	sw	$t0, -188($t1)
+	li	$t0, 82
+	addi	$t1, $sp, 12
+	sw	$t0, -192($t1)
+	li	$t0, 83
+	addi	$t1, $sp, 12
+	sw	$t0, -196($t1)
+	li	$t0, 84
+	addi	$t1, $sp, 12
+	sw	$t0, -200($t1)
+	li	$t0, 85
+	addi	$t1, $sp, 12
+	sw	$t0, -204($t1)
+	li	$t0, 86
+	addi	$t1, $sp, 12
+	sw	$t0, -208($t1)
+	li	$t0, 87
+	addi	$t1, $sp, 12
+	sw	$t0, -212($t1)
+	li	$t0, 88
+	addi	$t1, $sp, 12
+	sw	$t0, -216($t1)
+	li	$t0, 89
+	addi	$t1, $sp, 12
+	sw	$t0, -220($t1)
+	li	$t0, 90
+	addi	$t1, $sp, 12
+	sw	$t0, -224($t1)
+	li	$t0, 43
+	addi	$t1, $sp, 12
+	sw	$t0, -228($t1)
+	li	$t0, 45
+	addi	$t1, $sp, 12
+	sw	$t0, -232($t1)
+	li	$t0, 42
+	addi	$t1, $sp, 12
+	sw	$t0, -236($t1)
+	li	$t0, 47
+	addi	$t1, $sp, 12
+	sw	$t0, -240($t1)
+	li	$t0, 52
+	addi	$t1, $sp, 12
+	sw	$t0, -244($t1)
+	la	$a0, str_25
+	li	$v0, 4
+	syscall
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_4_begin:
+	addi	$t0, $sp, 44
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 3
+	li	$t1, 4
+	mult	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -20($t3)
+	li	$t0, 2
+	li	$t1, 7
+	mult	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -24($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	li	$t1, 3
+	div	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -28($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -20($t7)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t1, -28($t7)
+	add	$t2, $t0, $t1
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -32($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -32($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	li	$t0, 3
+	li	$t1, 5
+	sub	$t2, $t0, $t1
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -36($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -36($t7)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t1, -16($t7)
+	mult	$t0, $t1
+	mflo	$t2
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -40($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -40($t7)
+	li	$t1, 8
+	add	$t2, $t0, $t1
+	addi	$t7, $sp, 44
+	lw	$t3, -4($t7)
+	sw	$t2, -44($t3)
+	addi	$t7, $sp, 44
+	lw	$t7, -4($t7)
+	lw	$t0, -44($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	li	$t0, 1
+	addi	$t1, $sp, 44
+	sw	$t0, -12($t1)
+	addi	$sp, $sp, 44
+	lw	$ra, -8($sp)
+	jr	$ra
+	addi	$sp, $sp, 44
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_5_begin:
+	addi	$t0, $sp, 12
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 1234567
+	addi	$t1, $sp, 12
+	sw	$t0, -16($t1)
+	li	$t0, 890
+	addi	$t1, $sp, 12
+	sw	$t0, -20($t1)
+	li	$t0, -199
+	addi	$t1, $sp, 12
+	sw	$t0, -24($t1)
+	li	$t0, 199
+	addi	$t1, $sp, 12
+	sw	$t0, -28($t1)
+	li	$t0, 0
+	addi	$t1, $sp, 12
+	sw	$t0, -32($t1)
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_6_begin:
+	addi	$t0, $sp, 12
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	la	$a0, str_26
+	li	$v0, 4
+	syscall
+	li	$t0, 0
+	addi	$t1, $sp, 12
+	sw	$t0, -12($t1)
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_7_begin:
+	addi	$t0, $sp, 12
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+	addi	$sp, $sp, 12
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_8_begin:
+	addi	$t0, $sp, 16
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 10
+	addi	$t1, $sp, 16
+	sw	$t0, -16($t1)
+	li	$t0, 20
+	move	$t2, $t0
+	addi	$t7, $sp, 16
+	lw	$t3, -4($t7)
+	sw	$t2, -20($t3)
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t1, -20($t7)
+	add	$t2, $t0, $t1
+	addi	$t7, $sp, 16
+	lw	$t3, -4($t7)
+	sw	$t2, -24($t3)
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -24($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	addi	$sp, $sp, 16
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_9_begin:
+	addi	$t0, $sp, 16
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 2
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_case_0_end
+	la	$a0, str_27
+	li	$v0, 4
+	syscall
+	j	LABEL_switch_0_end
+LABEL_case_0_end:
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 3
+	xor	$t2, $t0, $t1
+	sltiu	$t6, $t2, 1
+	beq	$t6, $0, LABEL_case_1_end
+	la	$a0, str_28
+	li	$v0, 4
+	syscall
+	j	LABEL_switch_0_end
+LABEL_case_1_end:
+	la	$a0, str_29
+	li	$v0, 4
+	syscall
+LABEL_switch_0_end:
+	addi	$sp, $sp, 16
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_10_begin:
+	addi	$t0, $sp, 16
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 0
+	move	$t2, $t0
+	addi	$t7, $sp, 16
+	lw	$t3, -4($t7)
+	sw	$t2, -16($t3)
+LABEL_while_0_begin:
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 5
+	slt	$t6, $t0, $t1
+	beq	$t6, $0, LABEL_while_0_end
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 1
+	add	$t2, $t0, $t1
+	addi	$t7, $sp, 16
+	lw	$t3, -4($t7)
+	sw	$t2, -20($t3)
+	addi	$t7, $sp, 16
+	lw	$t7, -4($t7)
+	lw	$t0, -20($t7)
+	move	$t2, $t0
+	addi	$t7, $sp, 16
+	lw	$t3, -4($t7)
+	sw	$t2, -16($t3)
+	j	LABEL_while_0_begin
+LABEL_while_0_end:
+	addi	$sp, $sp, 16
+	lw	$ra, -8($sp)
+	jr	$ra
+LABEL_func_11_begin:
+	addi	$t0, $sp, 20
+	lw	$t1, -4($t0)
+	sw	$ra, -8($t0)
+	li	$t0, 3
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 4
+	li	$t2, 20
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 97
+	li	$t2, 24
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 98
+	li	$t2, 28
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_2_begin
+	li	$t0, 4
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 3
+	li	$t2, 20
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 98
+	li	$t2, 24
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 97
+	li	$t2, 28
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_2_begin
+	li	$t0, 3
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 3
+	li	$t2, 20
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 97
+	li	$t2, 24
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 97
+	li	$t2, 28
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_2_begin
+	li	$t0, 2
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 44
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_4_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 12
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_3_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 12
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_5_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 12
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_6_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 12
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_7_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 16
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_8_begin
+	addi	$t7, $sp, 20
+	lw	$t3, 0($t7)
+	li	$v0, 5
+	syscall
+	sw	$v0, -20($t3)
+	addi	$t7, $sp, 20
+	lw	$t7, 0($t7)
+	lw	$t0, -20($t7)
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_1_begin
+	lw	$t0, -12($sp)
+	addi	$t7, $sp, 20
+	lw	$t1, -4($t7)
+	sw	$t0, -16($t1)
+	addi	$t7, $sp, 20
+	lw	$t7, -4($t7)
+	lw	$t0, -16($t7)
+	li	$t1, 97
+	add	$t2, $t0, $t1
+	addi	$t7, $sp, 20
+	lw	$t3, -4($t7)
+	sw	$t2, -20($t3)
+	addi	$t7, $sp, 20
+	lw	$t7, -4($t7)
+	lw	$t0, -20($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	addi	$t7, $sp, 20
+	lw	$t3, 0($t7)
+	li	$v0, 5
+	syscall
+	sw	$v0, -24($t3)
+	addi	$t7, $sp, 20
+	lw	$t3, 0($t7)
+	li	$v0, 5
+	syscall
+	sw	$v0, -28($t3)
+	addi	$t7, $sp, 20
+	lw	$t7, 0($t7)
+	lw	$t0, -24($t7)
+	move	$a0, $t0
+	li	$v0, 1
+	syscall
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 28
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_0_begin
+	li	$t0, 2
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 16
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_9_begin
+	li	$t0, 3
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 16
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_9_begin
+	li	$t0, 4
+	li	$t2, 16
+	sub	$t1, $sp, $t2
+	sw	$t0, 0($t1)
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 16
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_9_begin
+	li	$t0, 0x2ffc
+	sw	$t0, 0($sp)
+	sw	$sp, -4($sp)
+	li	$t0, 16
+	sub	$sp, $sp, $t0
+	jal	LABEL_func_10_begin

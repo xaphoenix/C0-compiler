@@ -1,7 +1,7 @@
 #define FUNC 0
 #define PARA 1
 #define PUSH 2
-#define CALL 3
+#define CALLL 3
 #define RECALL 4
 #define RET 5
 #define VAR 6
@@ -34,6 +34,8 @@ int func_num;  // func counter
 int switch_num;  // switch counter
 int case_num;  // case counter
 int val_num;  // value counter
+
+map<string, string> label2func;
 
 void mcode_insert(int type, string s0)
 {
@@ -87,7 +89,7 @@ void mcode_insert(int type, string s0, string s1, string s2, string s3, string s
 
 string tmp_var()
 {
-	return "t" + num2string(val_num++);
+	return "$t" + num2string(val_num++) + "@" + now_func;
 }
 
 string if_else()

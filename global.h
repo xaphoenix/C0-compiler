@@ -19,8 +19,8 @@ int now_col = -1;  // now column
 int all_row;  // the number of lines in current file
 int all_col;  // the number of column in current line
 int sym_no;  // the no. of current sym
-const int sp = 0x2ffc;
 string now_string;  //now string content
+string now_func;  // now function name
 string sym;  // now symbol
 string content[maxline]; // store all content of file
 
@@ -33,6 +33,11 @@ int main_flag;
 int error_flag;
 char file_path[11000]="test.txt";
 char file_tmp[maxcol + 10];
+
+int push_addr = 16;
+int func_size = 0;
+int str_num;
+int tcode_main;
 
 map<string, string> key_word;
 //symbol
@@ -80,19 +85,37 @@ string ersy = "ERSY";  // error
 string num2string(int num)
 {
 	string s = "";
+	int flag = 0;
+	if (num < 0)
+	{
+		flag = 1;
+		num = abs(num);
+	}
 	while (num) s = (char)(num % 10 + '0') + s, num /= 10;
 	if (s.size() == 0) s = "0";
+	if (flag) s = "-" + s;
 	return s;
 }
 int string2num(string s)
 {
+	if (s[0] == '\'')
+	{
+		return s[1];
+	}
+	int low = 0;
+	int ff = 1;
+	if (s[0] == '-') 
+	{
+		low = 1;
+		ff = -1;
+	}
 	int res=0;
 	int l=s.size();
-	for (int i=0;i<l;i++)
+	for (int i = low; i < l; i++)
 	{
-		res=res*10+(s[i]-'0');
+		res = res * 10 + (s[i] - '0');
 	}
-	return res;
+	return res * ff;
 }
 char string2char(string s)
 {
