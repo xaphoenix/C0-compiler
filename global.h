@@ -138,8 +138,8 @@ string change_chars(char *s)
 
 void init_read()
 {
-	//printf("please input your code location:");
-	//scanf("%s",file_path);
+	printf("please input your code location:");
+	scanf("%s",file_path);
 	FILE* f = fopen(file_path, "r");
 	freopen("output.txt","w",stdout);
 	for (int i = 0; i < maxline; i++)

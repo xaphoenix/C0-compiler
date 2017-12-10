@@ -1,7 +1,7 @@
 #define FUNC 0
 #define PARA 1
 #define PUSH 2
-#define CALLL 3
+#define CALL 3
 #define RECALL 4
 #define RET 5
 #define VAR 6

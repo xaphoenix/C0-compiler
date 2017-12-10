@@ -242,15 +242,12 @@ void tcode_print(mcode t)
 		case PUSH:
 		{
 			string x = t.s[1];
-			int lv = string2num(cut_string2(x));
 			get_reg(t0, x);
-			toutput(li, t2, num2string(push_addr));
-			toutput(sub, t1, sp, t2);
-			toutput(sw, t0, "0(" + t1 + ")");
+			toutput(sw, t0, "-" + num2string(push_addr) + "(" + sp + ")");
 			push_addr += 4;
 			break;
 		}
-		case CALLL:
+		case CALL:
 		{
 			string x = t.s[1];
 			string func = func_label(x);
@@ -393,7 +390,6 @@ void tcode_print(mcode t)
 				func_size = funcTable[0][id].size;
 				if (id == "main") tcode_main = 1;
 				toutput(addi, t0, sp, num2string(func_size));
-				toutput(lw, t1, "-4(" + t0 + ")");
 				toutput(sw, ra, "-8(" + t0 + ")");
 			} 
 			break;
@@ -436,8 +432,7 @@ void tcode_print(mcode t)
 		{
 			if (check_at(t.s[1]))
 			{
-				get_reg(t0, t.s[1]);
-				toutput(moves, a0, t0);
+				get_reg(a0, t.s[1]);
 				toutput(li, v0, "1");
 				toutput(syscall);
 			}
@@ -487,7 +482,7 @@ void tcode_output()
 		if (code[i].type == LABEL && !start_flag)
 		{
 			mcode tmp;
-			tmp.type = CALLL;
+			tmp.type = CALL;
 			tmp.s[1] = "main";
 			tcode_print(tmp);
 			start_flag = 1;

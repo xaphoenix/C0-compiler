@@ -401,7 +401,7 @@ void check_func_use(string id, int re)
 	}
 	if (re == 1 && tmp.type == VOID) print_compile_error(30);
 	if (grammar_debug) printf("This is a func use!\n");
-	mcode_insert(CALLL, "call", id);
+	mcode_insert(CALL, "call", id);
 }
 void check_condition()
 {

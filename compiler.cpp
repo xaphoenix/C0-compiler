@@ -28,7 +28,8 @@ int main()
 	//test_word();
 	getch();
 	check_program(adsp);
-	//mcode_print();
+	//mc1ode_print();
+	if (error_flag) return 0;
 	tcode_init();
 	tcode_output();
 	//mcode_print();

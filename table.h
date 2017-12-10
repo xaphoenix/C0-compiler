@@ -109,12 +109,12 @@ void insert_func(int type, string id, vector<pair<int, string> > para, int &addr
 		if (para[i].first == CHAR) 
 		{
 			tmp.size += 4;
-			mcode_insert(PARA, "char", para[i].second);
+			mcode_insert(PARA, "para", "char", para[i].second);
 		}
 		else 
 		{
 			tmp.size += 4;
-			mcode_insert(PARA, "int", para[i].second);
+			mcode_insert(PARA, "para", "int", para[i].second);
 		}
 	funcTable[level][id] = tmp;
 }
