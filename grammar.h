@@ -380,14 +380,17 @@ void check_func_use(string id, int re)
 		else
 		{
 			getsym();
+			vector<string> tvar;
+			tvar.clear(); 
 			for (int i = 0; i < tmp.para.size(); i++)
 			{
-				string tvar = check_expression();
-				mcode_insert(PUSH, "push", tvar);
+				tvar.push_back(check_expression());
 				if (i == tmp.para.size() - 1) break;
 				if (sym == comma) getsym();
 				else print_compile_error(32);
 			}
+			for (int i = 0; i < tvar.size(); i++)
+				mcode_insert(PUSH, "push", tvar[i]);
 			if (sym == rparent) getsym();
 			else print_compile_error(15);
 		}
