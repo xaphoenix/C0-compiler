@@ -242,6 +242,7 @@ void getsym()
 			getch();
 			while (isalpha(ch) || isdigit(ch)) 
 			{
+				ch = lower(ch);
 				now_string = now_string + ch;
 				getch();
 			}

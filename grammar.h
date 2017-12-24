@@ -6,9 +6,9 @@ void check_func(string id, int rflag, int &addr);
 void check_statements(int pr);
 void check_program(int &addr);
 void check_func_use(string id,int re);
-string check_factor();
-string check_item();
-string check_expression();
+string check_factor(int &type);
+string check_item(int &type);
+string check_expression(int &type);
 void check_printf();
 void check_scanf();
 void check_condition(int pr);
@@ -234,7 +234,7 @@ void check_parameter_declaration(vector<pair<int,string> > &para, int &addr)
 	if (sym != lbrace) print_compile_error(21);
 	if (grammar_debug) printf("This is a parameter declaration!\n");
 }
-string check_factor()
+string check_factor(int &type)
 {
 	string nvar = "";
 	if (sym == ident)
@@ -247,7 +247,8 @@ string check_factor()
 			if (sym == lbracket)
 			{
 				getsym();
-				string tvar = check_expression();
+				int tmp_type = 1;
+				string tvar = check_expression(tmp_type);
 				if (sym == rbracket) getsym();
 				else print_compile_error(18);
 				if (!exist_array(id, lv))
@@ -255,6 +256,9 @@ string check_factor()
 					print_compile_error(26);
 					skip(semicolon, rbrace);
 				}
+				array_table tmp_array = find_array(id, lv);
+				if (tmp_array.type == CHAR) type = 1;
+				else type = 0;
 				mcode_insert(LARRAY, nvar = tmp_var(), "=", id + "[" + tvar + "]" + "@" + num2string(lv) + "#" + num2string(find_array(id, lv).addr) + "*" + num2string(find_array(id, lv).type)) ;
 			}
 			else
@@ -264,6 +268,9 @@ string check_factor()
 					check_func_use(id, 1);
 					nvar = tmp_var();
 					mcode_insert(RECALL, nvar, "=", "ret");
+					func_table tmp_func = find_func(id, lv);
+					if (tmp_func.type == CHAR) type = 1;
+					else type = 0;
 				}
 				else if (!exist_ident(id, lv))
 				{
@@ -272,7 +279,10 @@ string check_factor()
 				}
 				else
 				{
-					nvar = id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_array(id, lv).type);
+					ident_table tmp_ident = find_ident(id, lv);
+					if (tmp_ident.type == CHAR) type = 1;
+					else type = 0;
+					nvar = id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_ident(id, lv).type);
 				}
 			}
 		}
@@ -285,7 +295,7 @@ string check_factor()
 	else if (sym == lparent)
 	{
 		getsym();
-		nvar = check_expression();
+		nvar = check_expression(type);
 		if (sym == rparent) getsym();
 		else print_compile_error(15);
 	}
@@ -293,6 +303,7 @@ string check_factor()
 	{
 		nvar = now_string;
 		getsym();
+		type = 0;
 	}
 	else if (sym == plusy || sym == minusy)
 	{
@@ -304,6 +315,7 @@ string check_factor()
 			nvar = now_string;
 			if (ff == -1) nvar = "-" + nvar;
 			getsym();
+			type = 0;
 		}
 		else print_compile_error(16);
 	}
@@ -311,6 +323,7 @@ string check_factor()
 	{
 		nvar = "\'" + now_string + "\'";
 		getsym();
+		type = 1;
 	}
 	else
 	{
@@ -321,16 +334,19 @@ string check_factor()
 	if (grammar_debug) printf("This is a factor!\n");
 	return nvar;
 }
-string check_item()
+string check_item(int &type)
 {
 	string nvar = "";
 	string tvar1, tvar2;
-	nvar = tvar1 = check_factor();
+	int tmp_type = 1;
+	nvar = tvar1 = check_factor(tmp_type);
+	type &= tmp_type;
 	while (sym == timesy || sym == divsy)
 	{
 		string oper = sym;
 		getsym();
-		tvar2 = check_factor();
+		tvar2 = check_factor(tmp_type);
+		type = 0;
 		nvar = tmp_var();
 		if (oper == timesy) mcode_insert(ASSIGN, nvar, "=", tvar1, "*", tvar2);
 		else mcode_insert(ASSIGN, nvar, "=", tvar1, "/", tvar2);
@@ -339,7 +355,7 @@ string check_item()
 	if (grammar_debug) printf("This is a item!\n");
 	return nvar;
 }
-string check_expression()
+string check_expression(int &type)
 {
 	string nvar = "";
 	string tvar1, tvar2;
@@ -349,7 +365,9 @@ string check_expression()
 		if (sym == minusy) ff = -1;
 		getsym();
 	}
-	nvar = tvar1 = check_item();
+	int tmp_type = 1;
+	nvar = tvar1 = check_item(tmp_type);
+	type &= tmp_type;
 	if (ff == -1)
 	{
 		nvar = tmp_var();
@@ -360,7 +378,8 @@ string check_expression()
 	{
 		string oper = sym;
 		getsym();
-		tvar2 = check_item();
+		tvar2 = check_item(tmp_type);
+		type = 0;
 		nvar = tmp_var();
 		if (oper == plusy) mcode_insert(ASSIGN, nvar, "=", tvar1, "+", tvar2);
 		else mcode_insert(ASSIGN, nvar, "=", tvar1, "-", tvar2);
@@ -384,7 +403,8 @@ void check_func_use(string id, int re)
 			tvar.clear(); 
 			for (int i = 0; i < tmp.para.size(); i++)
 			{
-				tvar.push_back(check_expression());
+				int tmp_value = 1;
+				tvar.push_back(check_expression(tmp_value));
 				if (i == tmp.para.size() - 1) break;
 				if (sym == comma) getsym();
 				else print_compile_error(32);
@@ -406,12 +426,13 @@ void check_func_use(string id, int re)
 void check_condition()
 {
 	string tvar1, tvar2;
-	tvar1 = check_expression();
+	int tmp_type = 1;
+	tvar1 = check_expression(tmp_type);
 	if (sym == lss || sym == leq || sym == gtr || sym == geq || sym == neq || sym == eql)
 	{
 		string oper = now_string;
 		getsym();
-		tvar2 = check_expression();
+		tvar2 = check_expression(tmp_type);
 		mcode_insert(LOGIC, tvar1, oper, tvar2);
 	}
 	else mcode_insert(LOGIC, tvar1);
@@ -469,7 +490,7 @@ void check_scanf()
 			{
 				ident_table tmp = find_ident(id, lv);
 				if (tmp.con == 1) print_compile_error(37);
-				mcode_insert(SCAN, "scanf", id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_array(id, lv).type));
+				mcode_insert(SCAN, "scanf", id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_ident(id, lv).type));
 				getsym();
 			}
 			else
@@ -503,7 +524,7 @@ void check_scanf()
 					ident_table tmp = find_ident(id, lv);
 					if (tmp.con == 1) print_compile_error(37);
 					getsym();
-					mcode_insert(SCAN, "scanf", id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_array(id, lv).type));
+					mcode_insert(SCAN, "scanf", id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_ident(id, lv).type));
 				}
 				else
 				{
@@ -541,7 +562,8 @@ void check_printf()
 		if (sym == comma)
 		{
 			getsym();
-			tvar = check_expression();
+			int tmp_type = 1;
+			tvar = check_expression(tmp_type);
 			if (sym == rparent) getsym();
 			else print_compile_error(15);
 			mcode_insert(PRINT, "printf", tvar);
@@ -554,8 +576,10 @@ void check_printf()
 	}
 	else 
 	{
-		tvar = check_expression();
-		mcode_insert(PRINT, "printf", tvar);
+		int tmp_type = 1;
+		tvar = check_expression(tmp_type);
+		if (tmp_type == 1) mcode_insert(PRINT, "printf", tvar, "1");
+		else mcode_insert(PRINT, "printf", tvar);
 		if (sym == rparent) getsym();
 		else print_compile_error(15);
 	}
@@ -574,7 +598,7 @@ void check_case(int pr, string tvar1, string end_label)
 	}
 	else if (sym == chsy) 
 	{
-		tvar2 = now_string;
+		tvar2 = "\'" + now_string + "\'";
 		getsym();
 	}
 	else if (sym == plusy || sym == minusy)
@@ -620,7 +644,8 @@ void check_switch(int pr)
 	string tvar;
 	if (sym == lparent) getsym();
 	else print_compile_error(28);
-	tvar = check_expression();
+	int tmp_type = 1;
+	tvar = check_expression(tmp_type);
 	if (sym == rparent) getsym();
 	else print_compile_error(15);
 	if (sym == lbrace) getsym();
@@ -662,7 +687,8 @@ void check_statements(int pr)
 				getsym();
 				if (sym == becomes) getsym();
 				else print_compile_error(12);
-				string tvar= check_expression();
+				int tmp_type = 1;
+				string tvar= check_expression(tmp_type);
 				mcode_insert(ASSIGN, id + "@" + num2string(lv) + "#" + num2string(find_ident(id, lv).addr) + "*" + num2string(find_array(id, lv).type), "=", tvar);
 				if (sym == semicolon) getsym();
 				else print_compile_error(10);
@@ -674,12 +700,13 @@ void check_statements(int pr)
 				getsym();
 				if (sym == lbracket) getsym();
 				else print_compile_error(36);
-				string tvar1 = check_expression();
+				int tmp_type = 1; 
+				string tvar1 = check_expression(tmp_type);
 				if (sym == rbracket) getsym();
 				else print_compile_error(17);
 				if (sym == becomes) getsym();
 				else print_compile_error(12);
-				string tvar2 = check_expression();
+				string tvar2 = check_expression(tmp_type);
 				mcode_insert(SARRAY, id + "[" + tvar1 + "]" + "@" + num2string(lv) + "#" + num2string(find_array(id, lv).addr) + "*" + num2string(find_array(id, lv).type), "=", tvar2);
 				if (sym == semicolon) getsym();
 				else print_compile_error(10);
@@ -722,7 +749,8 @@ void check_statements(int pr)
 		{
 			if (sym == lparent) getsym();
 			else print_compile_error(28);
-			string tvar = check_expression();
+			int tmp_type;
+			string tvar = check_expression(tmp_type);
 			mcode_insert(RET, "ret", tvar);
 			if (sym == rparent) getsym();
 			else print_compile_error(15);
@@ -769,6 +797,7 @@ void check_func(string id, int pr,int &addr)
 		else break;
 	}
 	funcTable[level - 1][id].addr = addr;
+	funcTable[level - 1][id].size = abs(addr);
 	while (sym != rbrace)
 		check_statements(pr);
 	getsym();
@@ -825,7 +854,6 @@ void check_program(int &addr)
 						if (sym == numsy)
 						{
 							size = string2num(now_string);
-							getsym();
 						}
 						else
 						{

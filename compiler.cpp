@@ -4,7 +4,6 @@
 #include<cmath>
 #include<iostream>
 #include<algorithm>
-#include<set>
 #include<map>
 #include<queue>
 #include<stack>
@@ -28,7 +27,6 @@ int main()
 	//test_word();
 	getch();
 	check_program(adsp);
-	//mc1ode_print();
 	if (error_flag) return 0;
 	tcode_init();
 	tcode_output();

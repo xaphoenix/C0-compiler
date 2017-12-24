@@ -68,6 +68,13 @@ int check_at(string s)
 		if (s[i] == '@') flag = 1;
 	return flag;
 }
+int check_lbrace(string s)
+{
+	int flag = 0;
+	for (int i = 0; i < s.size(); i++)
+		if (s[i] == '[') flag = 1;
+	return flag;
+}
 
 map<string, string> str_addr;
 
@@ -99,6 +106,18 @@ string cut_array2(string s)
 		if (s[i] == ']') break;
 		if (flag) tmp = tmp + s[i];
 		if (s[i] == '[') flag = 1;
+	}
+	return tmp;
+}
+
+string cut_array3(string s)
+{
+	string tmp = "";
+	int flag = 0;
+	for (int i = 0; i < s.size();i++)
+	{
+		if (flag) tmp = tmp + s[i];
+		if (s[i] == ']') flag = 1;
 	}
 	return tmp;
 }
@@ -179,18 +198,21 @@ void tcode_init()
 					string tmp1 = cut_string1(code[i].s[j]);
 					code[i].s[j] = tmp1 + "@1#" + tmp_addr[tmp1];
 				}
-				if (code[i].s[j][code[i].s[j].size()-1] == ']')
+				if (check_lbrace(code[i].s[j]))
 				{
 					string tmp1 = cut_array1(code[i].s[j]);
 					string tmp2 = cut_array2(code[i].s[j]);
+					string tmp2s = cut_string1(tmp2);
+					string tmp3 = cut_array3(code[i].s[j]);
 					if (tmp2[0] == '$')
 					{
-						code[i].s[j] = tmp1 + "[" + tmp2 + "@1#" + tmp_addr[tmp2] + "]";
+						code[i].s[j] = tmp1 + "[" + tmp2s + "@1#" + tmp_addr[tmp2s] + "]" + tmp3;
 					}
 				}
 			}
 	}
 	toutput(".text", 0);
+	toutput(li, sp, "0x7ffffffc");
 	toutput(li, t0, num2string(func_size));
 	toutput(sub, sp, sp, t0);
 }
@@ -210,14 +232,14 @@ void get_lv(string s, int lv)
 
 void get_reg(string t, string s)
 {
-	if (s[0] >= '0' && s[0] <= '9')
+	if (s[0] >= '0' && s[0] <= '9' || s[0] == '-')
 	{
 		toutput(li, t, s);
 		return;
 	}
 	if (s[0] == '\'')
 	{
-		toutput(li, t, num2string(s[1]));
+		toutput(li, t, num2string((int)s[1]));
 		return;
 	}
 	string tmp1 = cut_string1(s);
@@ -251,7 +273,7 @@ void tcode_print(mcode t)
 		{
 			string x = t.s[1];
 			string func = func_label(x);
-			toutput(li, t0, "0x2ffc");
+			toutput(li, t0, "0x7ffffffc");
 			toutput(sw, t0, "0(" + sp + ")");
 			toutput(sw, sp, "-4(" + sp + ")");
 			toutput(li, t0, num2string(funcTable[0][x].size));
@@ -338,7 +360,7 @@ void tcode_print(mcode t)
 		{
 			if (t.s[1] == "")
 			{
-				get_reg(t7, t.s[0]);
+				get_reg(t6, t.s[0]);
 				break;
 			}
 			get_reg(t0, t.s[0]);
@@ -397,8 +419,8 @@ void tcode_print(mcode t)
 		case SARRAY:
 		{
 			string x = t.s[0];
-			int lv = string2num(cut_string2(x));
-			int addr = string2num(cut_string3(x));
+			int lv = string2num(cut_string2(cut_array3(x)));
+			int addr = string2num(cut_string3(cut_array3(x)));
 			get_reg(t0, t.s[2]);
 			get_reg(t2, cut_array2(x));
 			toutput(li, t3, "4");
@@ -412,8 +434,8 @@ void tcode_print(mcode t)
 		case LARRAY:
 		{
 			string x = t.s[2];
-			int lv = string2num(cut_string2(x));
-			int addr = string2num(cut_string3(x));
+			int lv = string2num(cut_string2(cut_array3(x)));
+			int addr = string2num(cut_string3(cut_array3(x)));
 			get_reg(t2, cut_array2(x));
 			toutput(li, t3, "4");
 			toutput(mult, t2, t3);
@@ -432,9 +454,18 @@ void tcode_print(mcode t)
 		{
 			if (check_at(t.s[1]))
 			{
-				get_reg(a0, t.s[1]);
-				toutput(li, v0, "1");
-				toutput(syscall);
+				if (t.s[2] == "1")
+				{
+					get_reg(a0, t.s[1]);
+					toutput(li, v0, "11");
+					toutput(syscall);
+				}
+				else
+				{
+					get_reg(a0, t.s[1]);
+					toutput(li, v0, "1");
+					toutput(syscall);
+				}
 			}
 			else
 			{

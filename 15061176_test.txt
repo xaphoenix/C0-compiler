@@ -1,6 +1,8 @@
 const int n = 10;
+const char x = 'a';
 int m;
 int a,b;
+char xx;
 
 void test_array
 {
@@ -42,6 +44,7 @@ void test_logic (int a,int b,char d,char e)
 	else printf("NE is wrong!");
 	if (d == e) printf("EQ is wrong!");
 	else printf("EQ is right!");
+	printf("\n");
 }
 void test_charandid
 {
@@ -142,11 +145,17 @@ void test_func
 
 void test_condition(int x)
 {
+	char y;
+	y = 'a';
 	switch(x)
 	{
 		case 2 : printf("x is 2!");
 		case 3 : printf("x is 3!");
 		default : printf("x is unknown!");
+	}
+	switch(y)
+	{
+		case 'a' : printf("y is a!");
 	}
 }
 void test_while
@@ -174,6 +183,10 @@ void main()
 	printf(fact(m) + 'a');
 	scanf(a, b);
 	printf(a);
+	printf(n);
+	printf(x);
+	scanf(xx);
+	printf(xx);
 	test_array;
 	test_condition(2);
 	test_condition(3);
